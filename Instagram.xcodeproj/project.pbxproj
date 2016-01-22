@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		65A60D681C51EC1C00FC230C /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A60D671C51EC1C00FC230C /* PhotoCell.swift */; };
 		678B170B1C51BD0000142BA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678B170A1C51BD0000142BA4 /* AppDelegate.swift */; };
 		678B17101C51BD0000142BA4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 678B170E1C51BD0000142BA4 /* Main.storyboard */; };
 		678B17121C51BD0000142BA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 678B17111C51BD0000142BA4 /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* Begin PBXFileReference section */
 		15627C69ADC8FABAD074A344 /* Pods-Instagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Instagram/Pods-Instagram.debug.xcconfig"; sourceTree = "<group>"; };
 		416E0F5E940C39BFF81966C0 /* Pods_Instagram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Instagram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		65A60D671C51EC1C00FC230C /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		678B17071C51BD0000142BA4 /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		678B170A1C51BD0000142BA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		678B170F1C51BD0000142BA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 		678B17091C51BD0000142BA4 /* Instagram */ = {
 			isa = PBXGroup;
 			children = (
+				65A60D671C51EC1C00FC230C /* PhotoCell.swift */,
 				678B170A1C51BD0000142BA4 /* AppDelegate.swift */,
 				678B170E1C51BD0000142BA4 /* Main.storyboard */,
 				678B17111C51BD0000142BA4 /* Assets.xcassets */,
@@ -211,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				678B170B1C51BD0000142BA4 /* AppDelegate.swift in Sources */,
+				65A60D681C51EC1C00FC230C /* PhotoCell.swift in Sources */,
 				67D54CA01C51E21700D9F951 /* PhotosViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

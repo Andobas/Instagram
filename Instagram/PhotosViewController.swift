@@ -7,16 +7,20 @@
 //
 
 import UIKit
+import AFNetworking
 
 class PhotosViewController: UIViewController {
 
     var photos: [NSDictionary]?
+    
+    @IBOutlet weak var table: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
+        table.rowHeight = 320;
         
         let clientId = "e05c462ebd86446ea48a5af73769b602"
         let url = NSURL(string:"https://api.instagram.com/v1/media/popular?client_id=\(clientId)")
@@ -34,16 +38,41 @@ class PhotosViewController: UIViewController {
                         data, options:[]) as? NSDictionary {
                             NSLog("response: \(responseDictionary)")
                             self.photos = responseDictionary["data"] as? [NSDictionary]
+                            
+                            self.photos![0]["images"]!["standard_resolution"]!!["url"]!;
                     }
                 }
         });
         task.resume()
+        
         
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let photos = photos {
+            return photos.count;
+        }
+        return 0;
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("PhotoCell", forIndexPath: indexPath);
+        let photourl = photos![indexPath.row]["images"]!["standard_resolution"]!!["url"];
+        
+//
+//        let url = NSURL(string: photourl);
+//        
+//        cell.imageView.setImageWithURL(photourl);
+//        
+//        cell.textLabel!.text = movie["title"] as? String;
+        
+        print("row \(indexPath.row)");
+        return cell;
     }
     
 
