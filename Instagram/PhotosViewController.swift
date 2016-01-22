@@ -2,25 +2,26 @@
 //  PhotosViewController.swift
 //  Instagram
 //
+//  CodePath University 2016 - Week 1 Lab: "Instagram"
+//
 //  Created by Juan Hernandez on 1/21/16.
-//  Copyright © 2016 codepath. All rights reserved.
 //
 
 import UIKit
 import AFNetworking
 
-class PhotosViewController: UIViewController {
+class PhotosViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var photos: [NSDictionary]?
     
-    @IBOutlet weak var table: UITableView!
+    @IBOutlet weak var photoTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
-        table.rowHeight = 320;
+        photoTableView.dataSource = self;
+        photoTableView.delegate = self;
+        photoTableView.rowHeight = 320;
         
         let clientId = "e05c462ebd86446ea48a5af73769b602"
         let url = NSURL(string:"https://api.instagram.com/v1/media/popular?client_id=\(clientId)")
@@ -36,16 +37,13 @@ class PhotosViewController: UIViewController {
                 if let data = dataOrNil {
                     if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
                         data, options:[]) as? NSDictionary {
-                            NSLog("response: \(responseDictionary)")
-                            self.photos = responseDictionary["data"] as? [NSDictionary]
-                            
-                            self.photos![0]["images"]!["standard_resolution"]!!["url"]!;
+//                          NSLog("response: \(responseDictionary)")
+                            self.photos = responseDictionary["data"] as? [NSDictionary];
+                            self.photoTableView.reloadData();
                     }
                 }
         });
         task.resume()
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,17 +59,15 @@ class PhotosViewController: UIViewController {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("PhotoCell", forIndexPath: indexPath);
-        let photourl = photos![indexPath.row]["images"]!["standard_resolution"]!!["url"];
         
-//
-//        let url = NSURL(string: photourl);
-//        
-//        cell.imageView.setImageWithURL(photourl);
-//        
-//        cell.textLabel!.text = movie["title"] as? String;
+        let cell = tableView.dequeueReusableCellWithIdentifier("PhotoCell", forIndexPath: indexPath) as! PhotoCell;
         
-        print("row \(indexPath.row)");
+        if let photos = photos {
+            let photoURL = photos[indexPath.row]["images"]!["standard_resolution"]!!["url"] as! String;
+            
+            cell.photoView.setImageWithURL(NSURL(string: photoURL)!);
+        }
+        
         return cell;
     }
     
