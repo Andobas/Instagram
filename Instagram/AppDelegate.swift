@@ -3,7 +3,6 @@
 //  Instagram
 //
 //  Created by Juan Hernandez on 1/21/16.
-//  Copyright © 2016 codepath. All rights reserved.
 //
 
 import UIKit
