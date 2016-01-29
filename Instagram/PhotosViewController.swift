@@ -79,6 +79,9 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
         }
         
         return cell;
+        
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -114,15 +117,22 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
         return 50;
     }
     
+    
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var vc = segue.destinationViewController as! PhotoDetailsViewController
+        var indexPath = photoTableView.indexPathForCell(sender as! UITableViewCell)
+        
+        //vc.photos = photos![indexPath!.row]
+        
+        
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }
